@@ -57,7 +57,7 @@ const SocialTracker: React.FC = () => {
   
   useEffect(() => {
     // In browser environment (not extension), use mock data
-    if (typeof chrome === 'undefined' || !chrome.storage) {
+    if (typeof window.chrome === 'undefined' || !window.chrome?.storage) {
       setSites(mockData.trackedSites);
       setSocialCounts(mockData.socialCounts);
       setIsLoading(false);
@@ -65,7 +65,7 @@ const SocialTracker: React.FC = () => {
     }
     
     // In extension environment, get real data
-    chrome.storage.local.get(['trackedSites', 'socialCounts'], (data) => {
+    chrome?.storage?.local.get(['trackedSites', 'socialCounts'], (data) => {
       if (data.trackedSites) {
         setSites(data.trackedSites);
       }
@@ -85,7 +85,7 @@ const SocialTracker: React.FC = () => {
       }
     };
     
-    if (chrome.storage) {
+    if (chrome?.storage) {
       chrome.storage.onChanged.addListener(storageListener);
       return () => chrome.storage.onChanged.removeListener(storageListener);
     }
