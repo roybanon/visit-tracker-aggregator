@@ -6,6 +6,9 @@
   "description": "A beautiful tracker that collects social data from websites you've visited",
   "permissions": ["storage", "tabs", "history", "scripting"],
   "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://cdn.gpteng.co; object-src 'self'"
+  },
   "action": {
     "default_popup": "index.html",
     "default_icon": {
