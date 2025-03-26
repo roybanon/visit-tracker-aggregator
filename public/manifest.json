@@ -1,0 +1,31 @@
+
+{
+  "manifest_version": 3,
+  "name": "Social Data Tracker",
+  "version": "1.0",
+  "description": "A beautiful tracker that collects social data from websites you've visited",
+  "permissions": ["storage", "tabs", "history", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
